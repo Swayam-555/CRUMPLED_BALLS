@@ -4,7 +4,7 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 const Render = Matter.Render;
-var dustbinObj,groundObject	,paperObj;
+var dustbinObj,groundObj	,paperObj;
 var world;
 
 
@@ -16,9 +16,9 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 	
-	groundObject=new ground(width/2,670,width,20);
+	groundObj=new ground(width/2,670,width,20);
 	dustbinObj=new dustbin(1200,650);
-paperObj=new paper(200,650,10);
+paperObj=new Paper(200,150,10);
 	Engine.run(engine);
   
 }
@@ -29,8 +29,14 @@ function draw() {
   background(230);
  
 
-  groundObject.display();
+  groundObj.display();
   dustbinObj.display();
 paperObj.display();
+}
+
+function keyPressed(){
+	if(keyCode === 32){
+		paperObj.velocity.x = paperObj.velocity.x + 5;
+	}
 }
 
